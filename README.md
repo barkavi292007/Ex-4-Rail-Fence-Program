@@ -19,7 +19,99 @@ STEP-4: Arrange the characters of the keyword in sorted order and the correspond
 STEP-5: Read the characters row wise or column wise in the former order to get the cipher text.
 
 # PROGRAM
+```
 
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char text[100], cipher[100], decrypt[100];
+    int key, i, j, k = 0;
+
+    printf("Enter plaintext: ");
+    fgets(text, sizeof(text), stdin);
+    text[strcspn(text, "\n")] = '\0';
+
+    printf("Enter key: ");
+    scanf("%d", &key);
+
+    int len = strlen(text);
+    char rail[key][len];
+
+    for(i = 0; i < key; i++)
+        for(j = 0; j < len; j++)
+            rail[i][j] = '\n';
+
+    int row = 0, dir = 1;
+
+    for(i = 0; i < len; i++)
+    {
+        rail[row][i] = text[i];
+
+        if(row == 0)
+            dir = 1;
+        else if(row == key - 1)
+            dir = -1;
+
+        row += dir;
+    }
+
+    for(i = 0; i < key; i++)
+        for(j = 0; j < len; j++)
+            if(rail[i][j] != '\n')
+                cipher[k++] = rail[i][j];
+
+    cipher[k] = '\0';
+
+    printf("\nEncrypted text: %s", cipher);
+
+    k = 0;
+    row = 0;
+    dir = 1;
+
+    for(i = 0; i < len; i++)
+    {
+        rail[row][i] = '*';
+
+        if(row == 0)
+            dir = 1;
+        else if(row == key - 1)
+            dir = -1;
+
+        row += dir;
+    }
+
+    for(i = 0; i < key; i++)
+        for(j = 0; j < len; j++)
+            if(rail[i][j] == '*')
+                rail[i][j] = cipher[k++];
+
+    row = 0;
+    dir = 1;
+
+    for(i = 0; i < len; i++)
+    {
+        decrypt[i] = rail[row][i];
+
+        if(row == 0)
+            dir = 1;
+        else if(row == key - 1)
+            dir = -1;
+
+        row += dir;
+    }
+
+    decrypt[len] = '\0';
+
+    printf("\nDecrypted text: %s\n", decrypt);
+
+    return 0;
+}
+
+```
 # OUTPUT
+<img width="1915" height="782" alt="image" src="https://github.com/user-attachments/assets/9038f8a8-12f8-46ec-8416-357cff67efd6" />
 
 # RESULT
+Thus, the Rail Fence Cipher program was successfully executed, and both encrypted and decrypted texts were obtained.
