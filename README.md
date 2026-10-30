@@ -111,7 +111,8 @@ int main()
 
 ```
 # OUTPUT
-<img width="1915" height="782" alt="image" src="https://github.com/user-attachments/assets/9038f8a8-12f8-46ec-8416-357cff67efd6" />
+<img width="922" height="327" alt="image" src="https://github.com/user-attachments/assets/6f852531-f896-4672-8760-a4dd380be6ce" />
+
 
 # RESULT
 Thus, the Rail Fence Cipher program was successfully executed, and both encrypted and decrypted texts were obtained.
